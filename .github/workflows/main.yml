@@ -1,17 +1,18 @@
-name: A workflow for my Hello World file
-on: push
+name: Release
+
+on: [push]
 
 jobs:
   build:
-    name: Hello world action
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v1
-    #- uses: ./action-a
-    #  env:
-    #    MY_NAME: "Mona"
-    - uses: unosquare/release-npm-package@Initial-Version
-      id: thismyid
-      name: ReleasePackage
-      with:
-        release-version: Patch
+      - uses: actions/checkout@v2
+        with:
+          repository: unosquare/release-npm-package
+          token: ${{ secrets.GITHUBPAT }}
+      #- uses: unosquare/release-npm-package@da53983a6ac6b3c5873c73e7f6428ff6840d4d57
+        #id: thismyid
+        #name: ReleasePackage
+        #with:
+          #release-version: Patch
