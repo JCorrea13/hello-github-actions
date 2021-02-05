@@ -15,4 +15,4 @@ jobs:
         id: thismyid
         name: HelloActionWithDocker
         with:
-          release-version: Patch
+          who-to-greet: 'Corria'
