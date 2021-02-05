@@ -11,8 +11,8 @@ jobs:
         with:
           repository: unosquare/release-npm-package
           token: ${{ secrets.GITHUBPAT }}
-      - uses: unosquare/release-npm-package@v1
+      - uses: JCorrea13/MyFirstAction@v1
         id: thismyid
-        name: ReleasePackage
+        name: HelloActionWithDocker
         with:
           release-version: Patch
