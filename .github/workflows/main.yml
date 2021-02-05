@@ -11,7 +11,7 @@ jobs:
         with:
           repository: unosquare/release-npm-package
           token: ${{ secrets.GITHUBPAT }}
-      - uses: unosquare/release-npm-package@da53983a6ac6b3c5873c73e7f6428ff6840d4d57
+      - uses: unosquare/release-npm-package@v1
         id: thismyid
         name: ReleasePackage
         with:
