@@ -7,10 +7,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-        with:
-          repository: unosquare/release-npm-package
-          token: ${{ secrets.GITHUBPAT }}
+      - name: Checkout
+        uses: actions/checkout@v2
       - uses: JCorrea13/MyFirstAction@main
         id: thismyid2
         name: HelloActionWithDocker
