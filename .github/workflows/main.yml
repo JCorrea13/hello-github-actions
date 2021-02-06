@@ -13,4 +13,4 @@ jobs:
         id: thismyid2
         name: HelloActionWithDocker
         with:
-          VERSION: 'Patch'
+          package-version: 'Patch'
