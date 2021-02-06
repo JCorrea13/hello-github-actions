@@ -12,7 +12,7 @@ jobs:
           repository: unosquare/release-npm-package
           token: ${{ secrets.GITHUBPAT }}
       - uses: JCorrea13/MyFirstAction@main
-        id: thismyid
+        id: thismyid2
         name: HelloActionWithDocker
         with:
           release-versiont: 'Patch'
