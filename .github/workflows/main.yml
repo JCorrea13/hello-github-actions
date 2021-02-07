@@ -10,8 +10,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Printing Before
+        run: ls
       - uses: JCorrea13/MyFirstAction@main
         id: thismyid2
         name: HelloActionWithDocker
         with:
           action-type: 'Release'
+      - name: PrintingAfter
+        run: ls
+        
