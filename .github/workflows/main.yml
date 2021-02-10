@@ -29,5 +29,5 @@ jobs:
           action-type: ${{ github.event.inputs.action-type }}
           github_token: ${{ github.token }}
           sprint: ${{ github.event.inputs.sprint }}
-          release-note: ${{ github.event.inputs.release-notes }}
+          release-notes: ${{ github.event.inputs.release-notes }}
       
