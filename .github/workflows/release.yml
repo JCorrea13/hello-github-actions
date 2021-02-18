@@ -1,0 +1,56 @@
+  
+name: Release2
+
+on:
+  workflow_dispatch:
+    inputs:
+      action-type:
+        description: 'Action Type ( Release | Back )'
+        required: true
+        default: 'Release'
+      sprint:
+        description: 'Sprint Identifier'
+        required: true
+      release-notes:
+        description: 'Tag Message'
+        required: true
+    
+jobs:
+  diff-validation:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Diff Validation
+        run: |
+          ! git diff master..dev --ignore-all-space --ignore-blank-lines --exit-code ':(exclude)package.json' ':(exclude)package-lock.json'
+    
+  push-version:
+    runs-on: ubuntu-latest
+    needs: [diff-validation]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: JCorrea13/MyFirstAction@main
+        id: thismyid2
+        name: HelloActionWithDocker
+        with:
+          action-type: ${{ github.event.inputs.action-type }}
+          github_token: ${{ github.token }}
+          sprint: ${{ github.event.inputs.sprint }}
+          release-notes: ${{ github.event.inputs.release-notes }}
+  
+  publish:
+    runs-on: ubuntu-latest
+    needs: [push-version]
+    
+    steps:
+      - name: 🍱 Publish
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.GPR_ACCESS_TOKEN }}" > ~/.npmrc
+          npm publish || true
+        env:
+          CI: true
+          NODE_AUTH_TOKEN: ${{secrets.GPR_ACCESS_TOKEN}}
