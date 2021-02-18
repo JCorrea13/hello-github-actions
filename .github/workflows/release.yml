@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Diff Validation
         run: |
-          ! git diff master..dev --ignore-all-space --ignore-blank-lines --exit-code ':(exclude)package.json' ':(exclude)package-lock.json'
+          ! git diff master..dev -- --ignore-all-space --ignore-blank-lines --exit-code ':(exclude)package.json' ':(exclude)package-lock.json'
     
   push-version:
     runs-on: ubuntu-latest
